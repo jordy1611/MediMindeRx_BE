@@ -23,6 +23,8 @@
 ## Abstract
 Never forget your medical supplies again! This mobile app serves to track reminders for medical supplies and notify the user at a given time. 
 
+The MediMinderx_BE is the backend application used by all of MediMinder's applictions. The application builds out RESTful API endpoints for full crud functionality for users and their reminders.
+
 ## Set up 
 Follow the steps below to get this database up and running on your local environment:
 
