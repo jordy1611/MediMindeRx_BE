@@ -25,6 +25,8 @@ Never forget your medical supplies again! This mobile app serves to track remind
 
 The MediMinderx_BE is the backend application used by all of MediMinder's applictions. The application builds out RESTful API endpoints for full crud functionality for users and their reminders.
 
+The most difficult and rewarding thing about building this application was picking up a brand new tech stack. We were able to learn python and develop this application in flask in 14 days. 
+
 ## Set up 
 Follow the steps below to get this database up and running on your local environment:
 
