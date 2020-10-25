@@ -13,11 +13,11 @@
 
 * Kathy Bui
   * [Github](https://github.com/kathybui732) 
-  * [LinkedIn](https://www.linkedin.com/)
+  * [LinkedIn](https://www.linkedin.com/kathytbui/)
 
 * Kwibe Merci
   * [Github](https://github.com/jkwibe) 
-  * [LinkedIn](https://www.linkedin.com/)
+  * [LinkedIn](https://www.linkedin.com/kwibe-merci/)
 
 
 ## Abstract
