@@ -2,7 +2,8 @@ from flask import Blueprint
 from flask_restful import Api
 from resources.Hello import Hello
 from resources.Reminder import ReminderResource
-from resources.User import UserResource, UserId
+from resources.User import UserResource
+from resources.UserId import UserId
 from resources.UserReminder import UserReminder
 
 api_bp = Blueprint('api', __name__)
