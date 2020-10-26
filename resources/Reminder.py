@@ -64,4 +64,4 @@ class ReminderResource(Resource):
         reminder = Reminder.query.filter_by(id=json_data['id']).delete()
         db.session.commit()
         result = reminder_schema.dump(reminder)
-        return { "status": 'success', 'message': 'Reminder sucessfully deleted'}, 200
+        return { "status": 'success', 'message': 'Reminder successfully deleted'}, 200
