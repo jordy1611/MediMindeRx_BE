@@ -182,13 +182,25 @@ Follow the steps below to get this database up and running on your local environ
   * Additional Details:
     * This is subject to change as more details are added
 
+* Action: Change Message
+  * Verb: 
+    * PUT
+  * URL: 
+    * baseUrl/api/messages/:messageId
+  * Required Body: 
+    * {id: 1}
+  * Response: 
+    * 200
+  * Additional Details:
+    * none
+
 * Action: Delete Message
   * Verb: 
     * DELETE
   * URL: 
-    * baseUrl/api/messages
+    * baseUrl/api/messages/:messageId
   * Required Body: 
-    * none
+    * {id: 1}
   * Response: 
     * 200
   * Additional Details:
