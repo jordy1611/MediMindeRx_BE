@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_restful import Resource
-from Model import db, User, User, UserSchema
+from Model import db, User, UserSchema
 
 users_schema = UserSchema(many=True)
 user_schema = UserSchema()
@@ -61,7 +61,7 @@ class UserResource(Resource):
         result = user_schema.dump(user)
         return { "status": 'success', 'data': result}, 204
 
-class UserIdResource(Resource):
+class UserId(Resource):
     def get(self, id):
         user = User.query.filter_by(id = id)
         user = users_schema.dump(user)
