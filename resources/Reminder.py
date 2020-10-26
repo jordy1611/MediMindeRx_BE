@@ -41,6 +41,7 @@ class ReminderResource(Resource):
     #         reminder = Reminder.query.filter_by(id=data['id']).first()
     #     if not reminder:
     #         return {'message': 'Reminder does not exist'}, 400
+        reminder = Reminder.query.filter_by(id=json_data['id']).first()
         reminder.supplies=json_data['supplies']
         reminder.days=json_data['days']
         reminder.time=json_data['time']
@@ -49,7 +50,7 @@ class ReminderResource(Resource):
         reminder.full_date = json_data['full_date']
         db.session.commit()
         result = reminder_schema.dump(reminder)
-        return { "status": 'success', 'data': result }, 204
+        return { "status": 'success', 'data': result }, 200
 
     def delete(self):
         json_data = request.get_json(force=True)
@@ -63,4 +64,4 @@ class ReminderResource(Resource):
         reminder = Reminder.query.filter_by(id=json_data['id']).delete()
         db.session.commit()
         result = reminder_schema.dump(reminder)
-        return { "status": 'success', 'data': result}, 204
+        return { "status": 'success', 'message': 'Reminder successfully deleted'}, 200

@@ -13,15 +13,19 @@
 
 * Kathy Bui
   * [Github](https://github.com/kathybui732) 
-  * [LinkedIn](https://www.linkedin.com/)
+  * [LinkedIn](https://www.linkedin.com/kathytbui/)
 
 * Kwibe Merci
   * [Github](https://github.com/jkwibe) 
-  * [LinkedIn](https://www.linkedin.com/)
+  * [LinkedIn](https://www.linkedin.com/kwibe-merci/)
 
 
 ## Abstract
 Never forget your medical supplies again! This mobile app serves to track reminders for medical supplies and notify the user at a given time. 
+
+The MediMinderx_BE is the backend application used by all of MediMinder's applictions. The application builds out RESTful API endpoints for full crud functionality for users and their reminders.
+
+The most difficult and rewarding thing about building this application was picking up a brand new tech stack. We were able to learn python and develop this application in flask in 14 days. 
 
 ## Set up 
 Follow the steps below to get this database up and running on your local environment:

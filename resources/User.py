@@ -45,7 +45,7 @@ class UserResource(Resource):
         user.name = json_data['name']
         db.session.commit()
         result = user_schema.dump(user)
-        return { "status": 'success', 'data': result }, 204
+        return { "status": 'success', 'data': result }, 200
 
     def delete(self):
         json_data = request.get_json(force=True)
@@ -59,7 +59,7 @@ class UserResource(Resource):
         user = User.query.filter_by(id=json_data['id']).delete()
         db.session.commit()
         result = user_schema.dump(user)
-        return { "status": 'success', 'data': result}, 204
+        return { "status": 'success', 'data': 'User has been successfully deleted'}, 200
 
 class UserId(Resource):
     def get(self, id):
