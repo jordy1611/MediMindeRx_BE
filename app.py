@@ -7,8 +7,11 @@ from resources.Scheduled import ScheduledResource
 from resources.UserId import UserIdResource
 from resources.UsersReminder import UsersReminderResource
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres@localhost:5432/mediminderx_be"
+db = SQLAlchemy(app)
 
 api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
