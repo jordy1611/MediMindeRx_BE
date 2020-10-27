@@ -1,1 +1,1 @@
-web: gunicorn run:run
+web: gunicorn --bind 0.0.0.0:$PORT main-api:run
