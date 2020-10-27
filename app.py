@@ -14,6 +14,9 @@ api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
 
 # Routes
+@app.route('/')
+def index():
+    return 'Hello'
 api.add_resource(ReminderResource, '/reminders')
 api.add_resource(UserResource, '/users')
 api.add_resource(LocationResource, '/locations')
