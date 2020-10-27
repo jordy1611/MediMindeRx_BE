@@ -1,4 +1,3 @@
-from flask import Flask
 from marshmallow_jsonapi import fields, Schema
 from flask_marshmallow import Marshmallow
 from flask_sqlalchemy import SQLAlchemy
@@ -25,11 +24,11 @@ class Reminder(db.Model):
     show_supplies = db.Column(db.Boolean, nullable=False)
     creation_date = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp(), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
-    user = db.relationship('User', backref=db.backref('reminders', lazy='dynamic' ))
+    user = db.relationship('User', backref=db.backref('reminders', lazy='dynamic'))
     scheduled_id = db.Column(db.Integer, db.ForeignKey('scheduleds.id', ondelete='CASCADE'), nullable=True)
-    scheduled_reminder = db.relationship('Scheduled', backref=db.backref('reminders', lazy='dynamic' ))
+    scheduled_reminder = db.relationship('Scheduled', backref=db.backref('reminders', lazy='dynamic'))
     location_id = db.Column(db.Integer, db.ForeignKey('locations.id', ondelete='CASCADE'), nullable=True)
-    location_reminder = db.relationship('Location', backref=db.backref('reminders', lazy='dynamic' ))
+    location_reminder = db.relationship('Location', backref=db.backref('reminders', lazy='dynamic'))
 
     def __init__(self, title, user_id, supplies, show_supplies, location_id=None, scheduled_id=None):
         self.title = title

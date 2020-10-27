@@ -1,9 +1,10 @@
-from flask import jsonify, request
+from flask import request
 from flask_restful import Resource
 from Model import db, User, UserSchema
 
 users_schema = UserSchema(many=True)
 user_schema = UserSchema()
+
 
 class UserResource(Resource):
     def get(self):
@@ -48,7 +49,6 @@ class UserResource(Resource):
         elif not user:
             return {'message': 'User does not exist'}, 400
 
-        user = User.query.filter_by(id=json_data['id']).delete()
+        User.query.filter_by(id=json_data['id']).delete()
         db.session.commit()
-        result = user_schema.dump(user)
-        return { 'message': 'User has been successfully deleted'}, 200
+        return {'message': 'User has been successfully deleted'}, 200

@@ -1,9 +1,10 @@
-from flask import request, jsonify
+from flask import request
 from flask_restful import Resource
 from Model import db, Reminder, ReminderSchema
 
 reminders_schema = ReminderSchema(many=True)
 reminder_schema = ReminderSchema()
+
 
 class ReminderResource(Resource):
     def get(self):
@@ -13,13 +14,17 @@ class ReminderResource(Resource):
 
     def post(self):
         json_data = request.get_json(force=True)
-        reminder = Reminder.query.filter_by(title=data['title']).first()
+        reminder = Reminder.query.filter_by(title=json_data['title']).first()
         if not json_data:
             return {'message': 'No input data provided'}, 400
         if reminder:
             return {'message': 'Reminder already exists'}, 400
 
-        reminder = Reminder(title=json_data['title'], user_id=json_data['user_id'], supplies=json_data['supplies'], show_supplies=json_data['show_supplies'])
+        reminder = Reminder(
+            title=json_data['title'],
+            user_id=json_data['user_id'],
+            supplies=json_data['supplies'],
+            show_supplies=json_data['show_supplies'])
 
         db.session.add(reminder)
         db.session.commit()
@@ -28,15 +33,15 @@ class ReminderResource(Resource):
 
     def put(self):
         json_data = request.get_json(force=True)
-        reminder = Reminder.query.filter_by(id=data['id']).first()
+        reminder = Reminder.query.filter_by(id=json_data['id']).first()
         if not json_data:
             return {'message': 'No input data provided'}, 400
         if not reminder:
             return {'message': 'Reminder does not exist'}, 400
 
         reminder = Reminder.query.filter_by(id=json_data['id']).first()
-        reminder.show_supplies=json_data['show_supplies']
-        reminder.supplies=json_data['supplies']
+        reminder.show_supplies = json_data['show_supplies']
+        reminder.supplies = json_data['supplies']
         reminder.title = json_data['title']
         db.session.commit()
         result = reminder_schema.dump(reminder)
@@ -47,10 +52,9 @@ class ReminderResource(Resource):
         reminder = Reminder.query.filter_by(id=json_data['id']).first()
         if not json_data:
             return {'message': 'No input data provided'}, 400
-        elif not user:
+        elif not reminder:
             return {'message': 'Reminder does not exist'}, 400
 
-        reminder = Reminder.query.filter_by(id=json_data['id']).delete()
+        Reminder.query.filter_by(id=json_data['id']).delete()
         db.session.commit()
-        result = reminder_schema.dump(reminder)
-        return { 'message': 'Reminder successfully deleted' }, 200
+        return {'message': 'Reminder successfully deleted'}, 200

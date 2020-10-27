@@ -1,9 +1,10 @@
-from flask import jsonify, request
+from flask import request
 from flask_restful import Resource
-from Model import db, Scheduled, ScheduledSchema, Reminder, ReminderSchema
+from Model import db, Scheduled, ScheduledSchema, Reminder
 
 scheduleds_schema = ScheduledSchema(many=True)
 scheduled_schema = ScheduledSchema()
+
 
 class ScheduledResource(Resource):
     def post(self):
