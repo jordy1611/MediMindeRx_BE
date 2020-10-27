@@ -5,9 +5,12 @@ from Model import db, User, UserSchema
 users_schema = UserSchema(many=True)
 user_schema = UserSchema()
 
-class UserId(Resource):
+class UserIdResource(Resource):
     def get(self, id):
+        user = User.query.filter_by(id = id).first()
+        if not user:
+            return {'message': 'User does not exist'}, 400
+
         user = User.query.filter_by(id = id)
         user = users_schema.dump(user)
-        # users = users_schema.dump(users)
-        return {"status":"success", "data": user}, 200
+        return user, 200
