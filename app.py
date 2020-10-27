@@ -13,6 +13,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres@localhost:5432/mediminderx_be"
 db = SQLAlchemy(app)
 
+from app import api_bp
+app.register_blueprint(api_bp, url_prefix='/api')
+
+
 api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
 
@@ -27,5 +31,9 @@ api.add_resource(ScheduledResource, '/scheduled')
 api.add_resource(UserIdResource, '/users/<int:id>')
 api.add_resource(UsersReminderResource, '/users/<int:user_id>/reminders')
 
+from Model import db
+db.init_app(app)
+
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
